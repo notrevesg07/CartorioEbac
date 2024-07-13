@@ -4,18 +4,102 @@
 #include <string.h> //biblioteca de strings
 //Função inserir
 int inserir(){
-	printf("Você escolheu inserir registros\n");
-	system("pause");	
+	//Aceitar pontuação português 
+	setlocale(LC_ALL, "portuguese");
+	// strings criadas
+	char arquivo[40];
+	char cpf[40];
+	char nome[40];
+	char sobrenome[40];
+	char cargo[40];
+	
+	// guardar cpf
+	printf("Qual seu CPF? ");
+	scanf("%s", cpf);
+	
+	//copiar string
+	strcpy(arquivo, cpf);
+	
+	//criar bloco de nota
+	FILE *file;
+	
+	//abrir atualizar e fechar arquivo
+	file = fopen(arquivo, "w");
+	fprintf(file,cpf);
+	fclose(file);
+
+	file = fopen(arquivo, "a");
+	fprintf(file, ",");
+	fclose(file);
+	
+	//guardar nome
+	printf("Qual seu nome? ");
+	scanf("%s", nome);
+	
+	file = fopen(arquivo, "a");
+	fprintf(file, nome);
+	fclose(file);
+	
+	file = fopen(arquivo, "a");
+	fprintf(file, ",");
+	fclose(file);
+	
+	//guardar sobrenome
+	printf("Qual seu sobrenome? ");
+	scanf("%s", sobrenome);
+	
+	file = fopen(arquivo, "a");
+	fprintf(file, sobrenome);
+	fclose(file);
+	
+	file = fopen(arquivo, "a");
+	fprintf(file, ",");
+	fclose(file);
+	
+	//guardar cargo
+	printf("Qual seu cargo? ");
+	scanf("%s", cargo);
+	
+	file = fopen(arquivo, "a");
+	fprintf(file, cargo);
+	fclose(file);
+	
+	
 }
 //Função consutar
 int consultar(){
-	printf("Você escolheu consultar os registros\n");
-	system("pause");	
+	//Aceitar pontuação português 
+	setlocale(LC_ALL, "portuguese");
+	// strings criadas
+	char cpf[40];
+	char conteudo[200];
+	//solicitar dados usuario 
+	printf("Digite o CPF: ");
+	scanf("%s", cpf);
+	//abrir arquivo
+	FILE *file;
+	file = fopen(cpf,"r");
+	// verificar dados validos
+	if(file == NULL)
+	{
+		printf("Arquivo na encontrado!!\n");
+	}
+	//exibir dados solicitados
+	while(fgets(conteudo, 200, file) != NULL)
+	{
+		printf("\nEsse são os dados solicitado: \n");
+		printf("%s", conteudo);
+		printf("\n\n");
+	}
+	system("pause");
+	
+	
 }
 //Função Excluir
 int excluir(){
-	printf("Você escolheu excluir registros\n");
-	system("pause");
+	//Aceitar pontuação português 
+	setlocale(LC_ALL, "portuguese");
+	
 }
 
 //Função Principal

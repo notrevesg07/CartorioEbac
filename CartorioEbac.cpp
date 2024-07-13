@@ -3,158 +3,164 @@
 #include <locale.h> //biblioteca de Acentuação
 #include <string.h> //biblioteca de strings
 
-int inserir(){                         // Função inserir
-	setlocale(LC_ALL, "portuguese");   // Aceitar pontuação português 
+int inserir(){// Função inserir
+	setlocale(LC_ALL, "portuguese"); // Aceitar pontuação português 
 	
-	char arquivo[40]; 				    //
-	char cpf[40];						// 
-	char nome[40];						// Criar Strings
-	char sobrenome[40];					//
-	char cargo[40];						//
+	char arquivo[40]; // Criar Strings 				    
+	char cpf[40]; // Criar Strings						
+	char nome[40]; // Criar Strings						
+	char sobrenome[40]; // Criar Strings					
+	char cargo[40]; // Criar Strings						
 	
 	
-	printf("Qual seu CPF? ");			// guardar cpf do usuario
+	printf("Qual seu CPF? "); // guardar cpf do usuario
 	scanf("%s", cpf);
 	
 	
-	strcpy(arquivo, cpf); 				// função para copiar string
+	strcpy(arquivo, cpf); // função para copiar string
 	
 
-	FILE *file;							// criar Arquivo
+	FILE *file; // criar Arquivo
 	
 	
-	file = fopen(arquivo, "w");			// abrir primera vez arquivo
+	file = fopen(arquivo, "w"); // abrir primera vez arquivo
 	fprintf(file,cpf);
 	fclose(file);
 
-	file = fopen(arquivo, "a");	    	// atualizar arquivo com ,
+	file = fopen(arquivo, "a"); // atualizar arquivo com ,
 	fprintf(file, ",");
 	fclose(file);
 
-	printf("Qual seu nome? ");			// guardar nome do usuario
+	printf("Qual seu nome? "); // guardar nome do usuario
 	scanf("%s", nome);
 	
-	file = fopen(arquivo, "a");			// atualizar arquivo com nome
+	file = fopen(arquivo, "a"); // atualizar arquivo com nome
 	fprintf(file, nome);
 	fclose(file);
 	
-	file = fopen(arquivo, "a");			// atualizar arquivo com ,
+	file = fopen(arquivo, "a"); // atualizar arquivo com ,
 	fprintf(file, ",");
 	fclose(file);
 	
 
-	printf("Qual seu sobrenome? ");		// guardar sobrenome do usuario
+	printf("Qual seu sobrenome? "); // guardar sobrenome do usuario
 	scanf("%s", sobrenome);
 	
-	file = fopen(arquivo, "a");			// atualizar arquivo com sobrenome
+	file = fopen(arquivo, "a"); // atualizar arquivo com sobrenome
 	fprintf(file, sobrenome);
 	fclose(file);
 	
-	file = fopen(arquivo, "a");			// atualizar arquivo com ,
+	file = fopen(arquivo, "a"); // atualizar arquivo com ,
 	fprintf(file, ",");
 	fclose(file);
 	
 	
-	printf("Qual seu cargo? ");			// guardar cargo do usuario
+	printf("Qual seu cargo? "); // guardar cargo do usuario
 	scanf("%s", cargo);
 	
-	file = fopen(arquivo, "a");			// atualizar arquivo com cargo
+	file = fopen(arquivo, "a"); // atualizar arquivo com cargo
 	fprintf(file, cargo);
 	fclose(file);
 	
 	
 }
-r
-int consultar(){								//Função consuta
-	
-	setlocale(LC_ALL, "portuguese"); 			// Aceitar pontuação português 
 
-	char cpf[40];								// strings criadas
-	char conteudo[200];							// strings criadas
+int consultar(){ //Função consuta
+	
+	setlocale(LC_ALL, "portuguese"); // Aceitar pontuação português 
+
+	char cpf[40]; // strings criadas
+	char conteudo[200]; // strings criadas
 	 
-	printf("Digite o CPF: ");					// guardar cpf do usuario
+	printf("Digite o CPF: "); // guardar cpf do usuario
 	scanf("%s", cpf);
 	
-	FILE *file;									// abrir arquivo
+	FILE *file; // abrir arquivo
 	file = fopen(cpf,"r");
 
-	if(file == NULL)							// verificar se são dados validos
+	if(file == NULL) // verificar se são dados validos
 	{
 		printf("Arquivo não  encontrado!!\n");
 	}
 	
-	while(fgets(conteudo, 200, file) != NULL) 	// exibir dados solicitados
+	while(fgets(conteudo, 200, file) != NULL) // exibir dados solicitados
 	{
 		printf("\nEsse são os dados solicitado: \n");
 		printf("%s", conteudo);
 		printf("\n\n");
 	}
-	system("pause");							// pausar sistema para Visualização 
+	system("pause"); // pausar sistema para Visualização 
 	
 	
 }
 
-int excluir(){                                     			// Função Excluir
+int excluir(){ // Função Excluir
 	char cpf[40]; 
 	
-	printf("Digite o CPF do usuário a ser deletado: ");  	// guardar cpf do usuario
+	printf("Digite o CPF do usuário a ser deletado: "); // guardar cpf do usuario
 	scanf("%s", cpf);
 
-	FILE *file;												// abrir arquivo
+	FILE *file; // abrir arquivo
 	file = fopen(cpf, "r");
 	fclose(file);
 	
-	if (file == NULL)										// verificar se são dados validos
+	if (file == NULL) // verificar se são dados validos
 	{
-		printf("\nCPF não encontrado!\n\n"); 				// dado inexistente
+		printf("\nCPF não encontrado!\n\n"); // dado inexistente
 		system("pause");
 	}
 	else
 	{
-		if (remove(cpf) == NULL) 							// remover dado
+		if (remove(cpf) == NULL) // remover dado
 		{ 
-			printf("\nCPF deletado com sucesso!\n\n "); 	// Informa que foi apagado
+			printf("\nCPF deletado com sucesso!\n\n "); // Informa que foi apagado
 			system("pause");
 		}
 	}
 }
 
 
-int main()													// Função Principal
+int main() // Função Principal
 {
 		
-	setlocale(LC_ALL, "portuguese"); 						// Aceitar pontuação português 
+	setlocale(LC_ALL, "portuguese"); // Aceitar pontuação português 
 	
-	int opcao=0; 											// criar variavel inteiro
-	int loco=1;												// criar variavel inteiro
+	int opcao=0; // criar variavel inteiro
+	int loco=1; // criar variavel inteiro
 	
-	for(loco=1;loco=1;){									// laço de repetiçõo
-		system("cls");										// limpar console
+	for(loco=1;loco=1;){ // laço de repetiçõo
+		system("cls"); // limpar console
 		
 		
-		printf("### Cartório Everton ### \n");				//
-		printf("Escolha a opção desejada do menu: \n\n");	// Menu	
-		printf("\t1 - registar nome\n");					// para 
-		printf("\t2 - consultar nome \n");					// Usuario	
-		printf("\t3 - deletar nome  \n\n");					//
-		printf("Opção: ");									//	
+		printf("### Cartório Everton ### \n"); // Menu para Usuario			
+		printf("Escolha a opção desejada do menu: \n\n");	 
+		printf("\t1 - registar nome\n");				  
+		printf("\t2 - consultar nome \n");				 	
+		printf("\t3 - deletar nome  \n");
+		printf("\t4 - Sair Do Sistema  \n\n");					
+		printf("Opção: "); // Menu para Usuario									
 		
 		
-		scanf("%d", &opcao);								// guardar Opção escolida do usuario
-		system("cls");										// limpar console
+		scanf("%d", &opcao); // guardar Opção escolida do usuario
+		system("cls"); // limpar console
 		
 		 
-		switch(opcao){										// Verificações das opções do menu
+		switch(opcao){ // Verificações das opções do menu
 			case 1:
-			inserir();										// chanar Função inserir
+			inserir(); // chanar Função inserir
 			break;
 			
 			case 2:
-			consultar();									// chanar Função consultar
+			consultar(); // chanar Função consultar
 			break;
 			
 			case 3:
-			excluir();										// chanar Função excluir
+			excluir(); // chanar Função excluir
+			break;
+			
+			case 4:
+			printf("Obrigado por utilizar o sistema flw\n"); // Sair Do Sistema 
+			return 0;
 			break;
 					
 			default:
@@ -162,7 +168,7 @@ int main()													// Função Principal
 			system("pause");
 			break;
 		}
-		printf(" Software livre SQN");						// print Aleatório   
+		printf(" Software livre SQN"); // print Aleatório   
 	}
 	
 }

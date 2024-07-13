@@ -25,22 +25,22 @@ int inserir(){// Função inserir
 	
 	file = fopen(arquivo, "w"); // abrir primera vez arquivo
 	fprintf(file,cpf);
-	fclose(file);
+	fclose(file); //fechar arquivo
 
 	file = fopen(arquivo, "a"); // atualizar arquivo com ,
 	fprintf(file, ",");
-	fclose(file);
+	fclose(file); //fechar arquivo
 
 	printf("Qual seu nome? "); // guardar nome do usuario
 	scanf("%s", nome);
 	
 	file = fopen(arquivo, "a"); // atualizar arquivo com nome
 	fprintf(file, nome);
-	fclose(file);
+	fclose(file); //fechar arquivo
 	
 	file = fopen(arquivo, "a"); // atualizar arquivo com ,
 	fprintf(file, ",");
-	fclose(file);
+	fclose(file); //fechar arquivo
 	
 
 	printf("Qual seu sobrenome? "); // guardar sobrenome do usuario
@@ -48,11 +48,11 @@ int inserir(){// Função inserir
 	
 	file = fopen(arquivo, "a"); // atualizar arquivo com sobrenome
 	fprintf(file, sobrenome);
-	fclose(file);
+	fclose(file); //fechar arquivo
 	
 	file = fopen(arquivo, "a"); // atualizar arquivo com ,
 	fprintf(file, ",");
-	fclose(file);
+	fclose(file); //fechar arquivo
 	
 	
 	printf("Qual seu cargo? "); // guardar cargo do usuario
@@ -60,7 +60,7 @@ int inserir(){// Função inserir
 	
 	file = fopen(arquivo, "a"); // atualizar arquivo com cargo
 	fprintf(file, cargo);
-	fclose(file);
+	fclose(file); //fechar arquivo
 	
 	
 }
@@ -77,6 +77,7 @@ int consultar(){ //Função consuta
 	
 	FILE *file; // abrir arquivo
 	file = fopen(cpf,"r");
+	
 
 	if(file == NULL) // verificar se são dados validos
 	{
@@ -90,7 +91,7 @@ int consultar(){ //Função consuta
 		printf("\n\n");
 	}
 	system("pause"); // pausar sistema para Visualização 
-	
+	fclose(file); //fechar arquivo
 	
 }
 
@@ -102,7 +103,7 @@ int excluir(){ // Função Excluir
 
 	FILE *file; // abrir arquivo
 	file = fopen(cpf, "r");
-	fclose(file);
+	fclose(file); //fechar arquivo
 	
 	if (file == NULL) // verificar se são dados validos
 	{

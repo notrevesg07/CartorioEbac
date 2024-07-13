@@ -2,166 +2,167 @@
 #include <stdlib.h> //biblioteca de Memoria
 #include <locale.h> //biblioteca de Acentuação
 #include <string.h> //biblioteca de strings
-//Função inserir
-int inserir(){
-	//Aceitar pontuação português 
-	setlocale(LC_ALL, "portuguese");
-	// strings criadas
-	char arquivo[40];
-	char cpf[40];
-	char nome[40];
-	char sobrenome[40];
-	char cargo[40];
+
+int inserir(){                         // Função inserir
+	setlocale(LC_ALL, "portuguese");   // Aceitar pontuação português 
 	
-	// guardar cpf
-	printf("Qual seu CPF? ");
+	char arquivo[40]; 				    //
+	char cpf[40];						// 
+	char nome[40];						// Criar Strings
+	char sobrenome[40];					//
+	char cargo[40];						//
+	
+	
+	printf("Qual seu CPF? ");			// guardar cpf do usuario
 	scanf("%s", cpf);
 	
-	//copiar string
-	strcpy(arquivo, cpf);
 	
-	//criar bloco de nota
-	FILE *file;
+	strcpy(arquivo, cpf); 				// função para copiar string
 	
-	//abrir atualizar e fechar arquivo
-	file = fopen(arquivo, "w");
+
+	FILE *file;							// criar Arquivo
+	
+	
+	file = fopen(arquivo, "w");			// abrir primera vez arquivo
 	fprintf(file,cpf);
 	fclose(file);
 
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a");	    	// atualizar arquivo com ,
 	fprintf(file, ",");
 	fclose(file);
-	
-	//guardar nome
-	printf("Qual seu nome? ");
+
+	printf("Qual seu nome? ");			// guardar nome do usuario
 	scanf("%s", nome);
 	
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a");			// atualizar arquivo com nome
 	fprintf(file, nome);
 	fclose(file);
 	
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a");			// atualizar arquivo com ,
 	fprintf(file, ",");
 	fclose(file);
 	
-	//guardar sobrenome
-	printf("Qual seu sobrenome? ");
+
+	printf("Qual seu sobrenome? ");		// guardar sobrenome do usuario
 	scanf("%s", sobrenome);
 	
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a");			// atualizar arquivo com sobrenome
 	fprintf(file, sobrenome);
 	fclose(file);
 	
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a");			// atualizar arquivo com ,
 	fprintf(file, ",");
 	fclose(file);
 	
-	//guardar cargo
-	printf("Qual seu cargo? ");
+	
+	printf("Qual seu cargo? ");			// guardar cargo do usuario
 	scanf("%s", cargo);
 	
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a");			// atualizar arquivo com cargo
 	fprintf(file, cargo);
 	fclose(file);
 	
 	
 }
-//Função consutar
-int consultar(){
-	//Aceitar pontuação português 
-	setlocale(LC_ALL, "portuguese");
-	// strings criadas
-	char cpf[40];
-	char conteudo[200];
-	//solicitar dados usuario 
-	printf("Digite o CPF: ");
+r
+int consultar(){								//Função consuta
+	
+	setlocale(LC_ALL, "portuguese"); 			// Aceitar pontuação português 
+
+	char cpf[40];								// strings criadas
+	char conteudo[200];							// strings criadas
+	 
+	printf("Digite o CPF: ");					// guardar cpf do usuario
 	scanf("%s", cpf);
-	//abrir arquivo
-	FILE *file;
+	
+	FILE *file;									// abrir arquivo
 	file = fopen(cpf,"r");
-	// verificar dados validos
-	if(file == NULL)
+
+	if(file == NULL)							// verificar se são dados validos
 	{
-		printf("Arquivo na encontrado!!\n");
+		printf("Arquivo não  encontrado!!\n");
 	}
-	//exibir dados solicitados
-	while(fgets(conteudo, 200, file) != NULL)
+	
+	while(fgets(conteudo, 200, file) != NULL) 	// exibir dados solicitados
 	{
 		printf("\nEsse são os dados solicitado: \n");
 		printf("%s", conteudo);
 		printf("\n\n");
 	}
-	system("pause");
+	system("pause");							// pausar sistema para Visualização 
 	
-	
-}
-//Função Excluir
-int excluir(){
-	char cpf[40];
-	
-	//solicitar dados usuario 
-	printf("Digite o CPF que deseja excluir: ");
-	scanf("%s", cpf);
-	
-	// revover arquivo
-	remove(cpf);
-	
-	// abrir e ler arquivo
-	FILE *file;
-	file = fopen(cpf,"r");
-	
-	//verifificar dados do usuario
-	if(file == NULL)
-	{
-		printf("CPF não existe mais \n");
-		system("pause");	
-	}
 	
 }
 
-//Função Principal
-int main()
+int excluir(){                                     			// Função Excluir
+	char cpf[40]; 
+	
+	printf("Digite o CPF do usuário a ser deletado: ");  	// guardar cpf do usuario
+	scanf("%s", cpf);
+
+	FILE *file;												// abrir arquivo
+	file = fopen(cpf, "r");
+	fclose(file);
+	
+	if (file == NULL)										// verificar se são dados validos
+	{
+		printf("\nCPF não encontrado!\n\n"); 				// dado inexistente
+		system("pause");
+	}
+	else
+	{
+		if (remove(cpf) == NULL) 							// remover dado
+		{ 
+			printf("\nCPF deletado com sucesso!\n\n "); 	// Informa que foi apagado
+			system("pause");
+		}
+	}
+}
+
+
+int main()													// Função Principal
 {
-	//Aceitar pontuação português 
-	setlocale(LC_ALL, "portuguese"); 
-	// Definiu variável 
-	int opcao=0; 
-	int loco=1;
-	//laço de repetiçõo
-	for(loco=1;loco=1;){
-		system("cls");// limpar console
-		//menu
-		printf("### Cartório Everton ### \n");
-		printf("Escolha a opção desejada do menu: \n\n");
-		printf("\t1 - registar nome\n");
-		printf("\t2 - consultar nome \n");
-		printf("\t3 - deletar nome  \n\n");
-		printf("Opção: ");
 		
-		//Informação do usuário 
-		scanf("%d", &opcao);
-		system("cls");// limpar console
+	setlocale(LC_ALL, "portuguese"); 						// Aceitar pontuação português 
+	
+	int opcao=0; 											// criar variavel inteiro
+	int loco=1;												// criar variavel inteiro
+	
+	for(loco=1;loco=1;){									// laço de repetiçõo
+		system("cls");										// limpar console
 		
-		// Verificações das opções do menu 
-		switch(opcao){
+		
+		printf("### Cartório Everton ### \n");				//
+		printf("Escolha a opção desejada do menu: \n\n");	// Menu	
+		printf("\t1 - registar nome\n");					// para 
+		printf("\t2 - consultar nome \n");					// Usuario	
+		printf("\t3 - deletar nome  \n\n");					//
+		printf("Opção: ");									//	
+		
+		
+		scanf("%d", &opcao);								// guardar Opção escolida do usuario
+		system("cls");										// limpar console
+		
+		 
+		switch(opcao){										// Verificações das opções do menu
 			case 1:
-			inserir();
+			inserir();										// chanar Função inserir
 			break;
 			
 			case 2:
-			consultar();
+			consultar();									// chanar Função consultar
 			break;
 			
 			case 3:
-			excluir();
+			excluir();										// chanar Função excluir
 			break;
 					
 			default:
-			printf("Você escolheu opção Que não existe \n");
+			printf("Você escolheu opção Que não existe \n"); // informar que opções nao existe
 			system("pause");
 			break;
 		}
-		printf(" Software livre SQN");
+		printf(" Software livre SQN");						// print Aleatório   
 	}
 	
 }

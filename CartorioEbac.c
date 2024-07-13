@@ -126,48 +126,69 @@ int main() // Função Principal
 	
 	int opcao=0; // criar variavel inteiro
 	int loco=1; // criar variavel inteiro
+	int comparacao1; // criar variavel inteiro
+	int comparacao2; // criar variavel inteiro
+	char login[10]= "a"; // criar variavel inteiro
+	char senha[10]="a"; // Criar Strings com valor a
 	
-	for(loco=1;loco=1;){ // laço de repetiçõo
-		system("cls"); // limpar console
-		
-		
-		printf("### Cartório Everton ###\n"); // Menu para Usuario			
-		printf("Escolha a opção desejada do menu:\n\n");	 
-		printf("\t1 - registar nome\n");				  
-		printf("\t2 - consultar nome \n");				 	
-		printf("\t3 - deletar nome\n");
-		printf("\t4 - Sair Do Sistema\n\n");					
-		printf("Opção: "); // Menu para Usuario									
-		
-		
-		scanf("%d",&opcao); // guardar Opção escolida do usuario
-		system("cls"); // limpar console
-		
-		 
-		switch(opcao){ // Verificações das opções do menu
-			case 1:
-			inserir(); // chanar Função inserir
-			break;
+	printf("### Cartório Everton ###\n\n");  // Menu para Usuario		
+	printf("Login de ADM!\n\nDigite seu usuario: ");  // Menu para Usuario		
+	scanf("%s",login); // guardar senha do usuario
+	
+	printf("Digite a sua senha: ");  // Menu para Usuario		
+	scanf("%s",senha); // guardar senha do usuario
+	
+	comparacao1 = strcmp(login,"everton"); // funcao para comparar quantidade de memoria de Strings
+	comparacao2 = strcmp(senha,"12345"); // funcao para comparar quantidade de memoria de Strings
+
+	
+	if (comparacao1 == 0 && comparacao2 == 0) // verificar se são dados validos
+	{
+	
+		for(loco=1;loco=1;){ // laço de repetiçõo
+			system("cls"); // limpar console
 			
-			case 2:
-			consultar(); // chanar Função consultar
-			break;
 			
-			case 3:
-			excluir(); // chanar Função excluir
-			break;
+			printf("### Cartório Everton ###\n"); // Menu para Usuario			
+			printf("Escolha a opção desejada do menu:\n\n");	 
+			printf("\t1 - registar nome\n");				  
+			printf("\t2 - consultar nome \n");				 	
+			printf("\t3 - deletar nome\n");
+			printf("\t4 - Sair Do Sistema\n\n");					
+			printf("Opção: "); // Menu para Usuario									
 			
-			case 4:
-			printf("Obrigado por utilizar o sistema flw\n"); // Sair Do Sistema 
-			return 0;
-			break;
-					
-			default:
-			printf("Você escolheu opção Que não existe\n"); // informar que opções nao existe
-			system("pause");
-			break;
+			
+			scanf("%d",&opcao); // guardar Opção escolida do usuario
+			system("cls"); // limpar console
+			
+			 
+			switch(opcao){ // Verificações das opções do menu
+				case 1:
+				inserir(); // chanar Função inserir
+				break;
+				
+				case 2:
+				consultar(); // chanar Função consultar
+				break;
+				
+				case 3:
+				excluir(); // chanar Função excluir
+				break;
+				
+				case 4:
+				printf("Obrigado por utilizar o sistema flw\n"); // Sair Do Sistema 
+				return 0;
+				break;
+						
+				default:
+				printf("Você escolheu opção Que não existe\n"); // informar que opções nao existe
+				system("pause");
+				break;
+			} 
 		}
-		printf(" Software livre SQN"); // print Aleatório   
 	}
-	
+	else
+	{
+		printf("Você Digitou usuario ou Senha Errado"); // informar erro de senha
+	}
 }

@@ -25,21 +25,26 @@ int main()
 		system("cls");// limpar console
 		
 		// Verificações das opções do menu 
-		if(opcao==1){
+		switch(opcao){
+			case 1:
 			printf("Você escolheu inserir registros\n");
 			system("pause");
-		}
-		if(opcao==2){
+			break;
+			
+			case 2:
 			printf("Você escolheu consultar os registros\n");
 			system("pause");
-		}
-		if(opcao==3){
+			break;
+			
+			case 3:
 			printf("Você escolheu excluir registros\n");
 			system("pause");
-		}
-		if(opcao>=4 || opcao<=0 ){
+			break;
+			
+			default:
 			printf("Você escolheu opção Que não existe \n");
 			system("pause");
+			break;
 		}
 		printf(" Software livre SQN");
 	}

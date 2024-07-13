@@ -97,8 +97,25 @@ int consultar(){
 }
 //Função Excluir
 int excluir(){
-	//Aceitar pontuação português 
-	setlocale(LC_ALL, "portuguese");
+	char cpf[40];
+	
+	//solicitar dados usuario 
+	printf("Digite o CPF que deseja excluir: ");
+	scanf("%s", cpf);
+	
+	// revover arquivo
+	remove(cpf);
+	
+	// abrir e ler arquivo
+	FILE *file;
+	file = fopen(cpf,"r");
+	
+	//verifificar dados do usuario
+	if(file == NULL)
+	{
+		printf("CPF não existe mais \n");
+		system("pause");	
+	}
 	
 }
 

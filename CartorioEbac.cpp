@@ -1,7 +1,24 @@
 #include <stdio.h>  //biblioteca de comunicação
 #include <stdlib.h> //biblioteca de Memoria
 #include <locale.h> //biblioteca de Acentuação
+#include <string.h> //biblioteca de strings
+//Função inserir
+int inserir(){
+	printf("Você escolheu inserir registros\n");
+	system("pause");	
+}
+//Função consutar
+int consultar(){
+	printf("Você escolheu consultar os registros\n");
+	system("pause");	
+}
+//Função Excluir
+int excluir(){
+	printf("Você escolheu excluir registros\n");
+	system("pause");
+}
 
+//Função Principal
 int main()
 {
 	//Aceitar pontuação português 
@@ -27,20 +44,17 @@ int main()
 		// Verificações das opções do menu 
 		switch(opcao){
 			case 1:
-			printf("Você escolheu inserir registros\n");
-			system("pause");
+			inserir();
 			break;
 			
 			case 2:
-			printf("Você escolheu consultar os registros\n");
-			system("pause");
+			consultar();
 			break;
 			
 			case 3:
-			printf("Você escolheu excluir registros\n");
-			system("pause");
+			excluir();
 			break;
-			
+					
 			default:
 			printf("Você escolheu opção Que não existe \n");
 			system("pause");
